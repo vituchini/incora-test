@@ -23,5 +23,9 @@ export const postsAPI = {
                 return res.data
             })
     },
-
+    addPost(userId, title, body) {
+        return instance.post(`posts`, {
+            userId, title, body
+        })
+    }
 }

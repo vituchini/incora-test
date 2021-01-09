@@ -5,6 +5,7 @@ import {Component} from "react";
 import UsersContainer from "./components/Users/UsersContainer";
 import {Provider} from "react-redux";
 import store from "./redux/redux-store"
+import PostsContainer from "./components/Posts/PostsContainer";
 class App extends Component {
 
     render() {
@@ -21,10 +22,10 @@ class App extends Component {
                         </header>
 
                         <div className='app-wrapper-content'>
-                            <Route path='/users'
+                            <Route exact path='/users'
                                    render={() => <UsersContainer/>}/>
-                            <Route path='/posts'
-                                   render={() => <div>posts</div>}/>
+                            <Route path='/users/:userId/posts'
+                                   render={() => <PostsContainer/>}/>
                         </div>
 
                     </div>

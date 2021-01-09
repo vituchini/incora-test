@@ -4,9 +4,8 @@ import {NavLink} from "react-router-dom";
 
 let User = ({user}) => {
     let u = user
-
     let objectToJsx = (obj) => {
-        return Object.keys(obj).map((x, y) => {
+        if (obj) return Object.keys(obj).map((x, y) => {
             if (typeof obj[x] === "string") {
                 return (
                     <div key={y}>{x} : {obj[x]} </div>
@@ -32,7 +31,7 @@ let User = ({user}) => {
                 {objectToJsx(u)}
             </div>
             <div>
-                <NavLink to={'/users/' + u.id + '/posts'}>
+                <NavLink to={`/users/${u.id}/posts`}>
                     <button>Posts</button>
                 </NavLink>
             </div>

@@ -1,9 +1,9 @@
 import React from "react";
-import s from './Users.module.css'
-import {NavLink} from "react-router-dom";
+import s from './Posts.module.css'
 
-let User = ({user}) => {
-    let u = user
+let Post = ({post}) => {
+    let p = post
+
     let objectToJsx = (obj) => {
         if (obj) return Object.keys(obj).map((x, y) => {
             if (typeof obj[x] === "string") {
@@ -20,22 +20,22 @@ let User = ({user}) => {
     }
 
     return (
-        <div key={u.id}>
+        <div key={p.id}>
             <div>
                 <img className={s.userPhoto}
                      src={"https://prm.ua/wp-content/uploads/2019/02/50766681_285739525440896_2458080093832029354_n.jpg"}
                      alt="userPhoto"
                 />
             </div>
-            <div className={'usersInfo'}>
-                {objectToJsx(u)}
+            <div className={'postInfo'}>
+                {objectToJsx(p)}
             </div>
             <div>
-                <NavLink to={`/users/${u.id}/posts`}>
-                    <button>Posts</button>
-                </NavLink>
+                <button>
+                    Details
+                </button>
             </div>
         </div>
     )
 }
-export default User
+export default Post

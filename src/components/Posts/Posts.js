@@ -16,7 +16,7 @@ let Posts = ({...props}) => {
             <button>Add new</button>
             <AppPostFormRedux onSubmit={addPost}/>
             <div className={s.Posts}>
-                {props.posts.map(p => <Post key={p.id} post={p}/>)}
+                {props.posts.map(p => <Post userId={props.userId} key={p.id} post={p}/>)}
             </div>
 
         </div>

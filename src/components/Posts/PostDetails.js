@@ -1,8 +1,7 @@
 import React from "react";
 import s from './Posts.module.css'
-import {NavLink} from "react-router-dom";
 
-let Post = ({post,userId}) => {
+let PostDetails = ({post}) => {
     let p = post
 
     return (
@@ -18,13 +17,14 @@ let Post = ({post,userId}) => {
                 text : {p.body}
             </div>
             <div>
-                <NavLink to={`/users/${userId}/posts/` + p.id}>
-                    <button>
-                        Details
-                    </button>
-                </NavLink>
+                <button>
+                    Edit
+                </button>
+                <button>
+                    Delete
+                </button>
             </div>
         </div>
     )
 }
-export default Post
+export default PostDetails

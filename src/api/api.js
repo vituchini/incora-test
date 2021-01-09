@@ -26,6 +26,14 @@ export const postsAPI = {
     addPost(userId, title, body) {
         return instance.post(`posts`, {
             userId, title, body
+        }).then(res => {
+            return res.data
         })
+    },
+    getComments(postId) {
+        return instance.get(`comments?postId=${postId}`)
+            .then(res => {
+                return res.data
+            })
     }
 }

@@ -1,26 +1,26 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    addPost,
     getPosts,
 } from "../../redux/posts-reducer";
-import Posts from "./Posts";
 import Preloader from '../common/Preloader/Preloader'
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
+import PostDetails from "./PostDetails";
 
-class PostsContainer extends React.Component {
+class PostsDetailsContainer extends React.Component {
 
     componentDidMount() {
         let userId = this.props.match.params.userId
-        if (userId) this.props.getPosts(userId)
+        let postId = this.props.match.params.postId
+        this.props.getPosts(userId,postId)
     }
 
     render() {
         return <>
             {this.props.isPostsLoading
                 ? <Preloader/>
-                : <Posts userId={this.props.match.params.userId} {...this.props}/>
+                : <PostDetails post={this.props.currentPost}/>
             }
 
         </>
@@ -29,7 +29,7 @@ class PostsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        posts: state.postsPage.posts,
+        currentPost:state.postsPage.currentPost,
         isPostsLoading: state.postsPage.isFetching
     }
 }
@@ -37,9 +37,8 @@ let mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps,
         {
-            addPost,
             getPosts,
         }
     ), withRouter
 )
-(PostsContainer)
+(PostsDetailsContainer)

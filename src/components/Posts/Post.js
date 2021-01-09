@@ -4,21 +4,6 @@ import s from './Posts.module.css'
 let Post = ({post}) => {
     let p = post
 
-    let objectToJsx = (obj) => {
-        if (obj) return Object.keys(obj).map((x, y) => {
-            if (typeof obj[x] === "string") {
-                return (
-                    <div key={y}>{x} : {obj[x]} </div>
-                )
-            } else if (typeof obj[x] === "object") {
-                return (
-                    <div key={y}>{objectToJsx(obj[x])}</div>
-                )
-            }
-            return ''
-        })
-    }
-
     return (
         <div key={p.id}>
             <div>
@@ -28,7 +13,8 @@ let Post = ({post}) => {
                 />
             </div>
             <div className={'postInfo'}>
-                {objectToJsx(p)}
+                title : {p.title} <br/>
+                text : {p.body}
             </div>
             <div>
                 <button>

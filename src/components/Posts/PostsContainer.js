@@ -12,7 +12,6 @@ import {compose} from "redux";
 class PostsContainer extends React.Component {
 
     componentDidMount() {
-        debugger
         let userId = this.props.match.params.userId
         if (userId) this.props.getPosts(userId)
     }
@@ -21,7 +20,7 @@ class PostsContainer extends React.Component {
         return <>
             {this.props.isPostsLoading
                 ? <Preloader/>
-                : <Posts {...this.props}/>
+                : <Posts userId={this.props.match.params.userId} {...this.props}/>
             }
 
         </>

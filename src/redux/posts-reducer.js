@@ -1,4 +1,5 @@
 import {postsAPI} from "../api/api";
+import {reset} from 'redux-form';
 
 const SET_POSTS = 'posts/SET_POSTS'
 const TOGGLE_IS_FETCHING = 'posts/TOGGLE_IS_FETCHING'
@@ -19,17 +20,17 @@ const postsReducer = (state = initialState, action) => {
             }
         }
         case ADD_POST: {
-            if (action.newPost) return {
+            return {
                 ...state,
                 currentPosts: [...state.currentPosts,
                     {
+                        userId: action.data.userId,
                         id: state.currentPosts.length + 1,
-                        message: action.newPost,
-                        likesCount: Math.floor(Math.random() * Math.floor(100))
+                        title: action.data.title,
+                        body: action.data.body,
                     }],
 
             }
-            break
         }
         case TOGGLE_IS_FETCHING: {
             return {
@@ -43,17 +44,22 @@ const postsReducer = (state = initialState, action) => {
     }
 }
 
-export const setPosts= (posts) => ({type: SET_POSTS, posts})
+export const setPosts = (posts) => ({type: SET_POSTS, posts})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
-export const addPost = (newPost) => ({type: ADD_POST, newPost})
+export const addPostSuccess = (userId, title, body) => ({type: ADD_POST, data: {userId, title, body}})
 
 export const getPosts = (userId) => async (dispatch) => {
-    debugger
     dispatch(toggleIsFetching(true))
     let data = await postsAPI.getPosts(userId)
     dispatch(setPosts(data))
     dispatch(toggleIsFetching(false))
+}
 
+export const addPost = (userId, title, body) => async (dispatch) => {
+    await postsAPI.addPost(userId, title, body)
+    console.log(userId, title, body)
+    dispatch(addPostSuccess(userId, title, body))
+    dispatch(reset('addPostForm'))
 }
 
 export default postsReducer

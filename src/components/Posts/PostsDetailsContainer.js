@@ -1,7 +1,8 @@
 import React from "react";
 import {connect} from "react-redux";
 import {
-    getPosts,
+    deletePost,
+    getPosts, updatePost,
 } from "../../redux/posts-reducer";
 import Preloader from '../common/Preloader/Preloader'
 import {withRouter} from "react-router-dom";
@@ -22,7 +23,9 @@ class PostsDetailsContainer extends React.Component {
             {this.props.isPostsLoading
                 ? <Preloader/>
                 : <div>
-                    <PostDetails post={this.props.currentPost}/>
+                    <PostDetails updatePost={this.props.updatePost}
+                                 post={this.props.currentPost}
+                                 deletePost={this.props.deletePost}/>
                     <Comments comments={this.props.comments}/>
                 </div>
             }
@@ -43,6 +46,8 @@ export default compose(
     connect(mapStateToProps,
         {
             getPosts,
+            updatePost,
+            deletePost
         }
     ), withRouter
 )

@@ -4,6 +4,7 @@ import {reset} from 'redux-form';
 const SET_POSTS = 'posts/SET_POSTS'
 const TOGGLE_IS_FETCHING = 'posts/TOGGLE_IS_FETCHING'
 const ADD_POST = 'posts/ADD_POST'
+const UPDATE_POST = 'posts/UPDATE_POST'
 const SET_CURRENT_POST = 'posts/SET_CURRENT_POST'
 const SET_COMMENTS = 'posts/SET_COMMENTS'
 let initialState = {
@@ -56,6 +57,13 @@ const postsReducer = (state = initialState, action) => {
                 })[0]
             }
         }
+        case UPDATE_POST: {
+            debugger
+            return {
+                ...state,
+                currentPost: {...action.updatedPost, userId: action.userId}
+            }
+        }
 
         default:
             return state
@@ -66,6 +74,7 @@ export const setPosts = (posts) => ({type: SET_POSTS, posts})
 export const setComments = (comments) => ({type: SET_COMMENTS, comments})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const addPostSuccess = (userId, title, body, id) => ({type: ADD_POST, data: {userId, title, body, id}})
+export const updatePostSuccess = (updatedPost, userId) => ({type: UPDATE_POST, updatedPost, userId})
 export const setCurrentPost = (postId) => ({type: SET_CURRENT_POST, postId})
 
 export const getPosts = (userId, postId = null) => async (dispatch) => {
@@ -89,6 +98,17 @@ export const addPost = (userId, title, body) => async (dispatch) => {
     let data = await postsAPI.addPost(userId, title, body)
     dispatch(addPostSuccess(userId, title, body, data.id))
     dispatch(reset('addPostForm'))
+}
+
+export const updatePost = (id, userId, title, body) => async (dispatch) => {
+    debugger
+    let data = await postsAPI.updatePost(id, userId, title, body)
+    dispatch(updatePostSuccess(data, userId))
+
+}
+
+export const deletePost = (postId) => async (dispatch) => {
+    await postsAPI.deletePost(postId)
 }
 
 export default postsReducer

@@ -24,9 +24,13 @@ export const postsAPI = {
             })
     },
     addPost(userId, title, body) {
-        return instance.post(`posts`, {
-            userId, title, body
-        }).then(res => {
+        return instance.post(`posts`,
+            {
+                userId,
+                title,
+                body
+            }
+        ).then(res => {
             return res.data
         })
     },
@@ -35,5 +39,20 @@ export const postsAPI = {
             .then(res => {
                 return res.data
             })
-    }
+    },
+    updatePost(id, userId, title, body) {
+        return instance.put(`posts/${id}`,
+            {
+                id,
+                userId,
+                title,
+                body
+            }
+        ).then(res => {
+            return res.data
+        })
+    },
+    deletePost(postId) {
+        instance.delete(`posts/${postId}`)
+    },
 }

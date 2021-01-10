@@ -23,7 +23,7 @@ let Posts = ({...props}) => {
                 <div className={s.addPostPopupWrapper}>
                     <div className={s.addPostPopup}>
                         <button onClick={() => setIsAddPostMode(false)}>X</button>
-                        <AppPostFormRedux onSubmit={addPost}/>
+                        <AddPostFormRedux onSubmit={addPost}/>
                     </div>
                 </div>
                 : <button onClick={() => setIsAddPostMode(true)}>Add new</button>
@@ -55,6 +55,6 @@ const AddPostForm = (props) => {
         </form>
     )
 }
-const AppPostFormRedux = reduxForm({form: 'addPostForm'})(AddPostForm)
+const AddPostFormRedux = reduxForm({form: 'addPostForm'})(AddPostForm)
 
 export default Posts

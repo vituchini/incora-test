@@ -1,5 +1,6 @@
 import {postsAPI} from "../api/api";
 import {reset} from 'redux-form';
+import {isEmptyObject} from "../utils/object-helpers";
 
 const SET_POSTS = 'posts/SET_POSTS'
 const TOGGLE_IS_FETCHING = 'posts/TOGGLE_IS_FETCHING'
@@ -50,15 +51,22 @@ const postsReducer = (state = initialState, action) => {
             }
         }
         case SET_CURRENT_POST: {
+            let filteredPosts = state.posts.filter(p => {
+                return p.id == action.postId
+            })
             return {
+
                 ...state,
-                currentPost: state.posts.filter(p => {
-                    return p.id == action.postId
-                })[0]
+                currentPost: isEmptyObject(filteredPosts)
+                    ? {
+                        userId: action.userId,
+                        title: 'The post is not Exist',
+                        body: 'The post is not Exist'
+                    }
+                    : filteredPosts[0]
             }
         }
         case UPDATE_POST: {
-            debugger
             return {
                 ...state,
                 currentPost: {...action.updatedPost, userId: action.userId}
@@ -75,15 +83,16 @@ export const setComments = (comments) => ({type: SET_COMMENTS, comments})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const addPostSuccess = (userId, title, body, id) => ({type: ADD_POST, data: {userId, title, body, id}})
 export const updatePostSuccess = (updatedPost, userId) => ({type: UPDATE_POST, updatedPost, userId})
-export const setCurrentPost = (postId) => ({type: SET_CURRENT_POST, postId})
+export const setCurrentPost = (postId,userId) => ({type: SET_CURRENT_POST, postId,userId})
 
 export const getPosts = (userId, postId = null) => async (dispatch) => {
+
     dispatch(toggleIsFetching(true))
     let data = await postsAPI.getPosts(userId)
     dispatch(setPosts(data))
 
     if (postId) {
-        dispatch(setCurrentPost(postId))
+        dispatch(setCurrentPost(postId, userId))
         await dispatch(getComments(postId))
     }
     dispatch(toggleIsFetching(false))
@@ -101,7 +110,6 @@ export const addPost = (userId, title, body) => async (dispatch) => {
 }
 
 export const updatePost = (id, userId, title, body) => async (dispatch) => {
-    debugger
     let data = await postsAPI.updatePost(id, userId, title, body)
     dispatch(updatePostSuccess(data, userId))
 

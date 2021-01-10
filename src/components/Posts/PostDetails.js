@@ -8,8 +8,8 @@ import {NavLink} from "react-router-dom";
 const maxLength30 = maxLengthCreator(30)
 
 let PostDetails = ({...props}) => {
-    let p = props.post
 
+    let p = props.post
     const [isUpdatePostMode, setIsUpdatePostMode] = useState(false);
 
     let updatePost = (value) => {
@@ -18,10 +18,12 @@ let PostDetails = ({...props}) => {
     }
     let deletePost = () => {
         props.deletePost(p.id)
+
     }
     return (
 
         <div key={p.id}>
+            {/*{!p.title ? <Redirect to={'/users'}/> : ''}*/}
             <div>
                 <img className={s.userPhoto}
                      src={"https://prm.ua/wp-content/uploads/2019/02/50766681_285739525440896_2458080093832029354_n.jpg"}

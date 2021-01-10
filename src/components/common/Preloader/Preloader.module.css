@@ -1,0 +1,28 @@
+
+.preloaderWrapper{
+    width: 100%;
+    min-height: 70vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preloader {
+    width: 50vw;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .preloader {
+        animation: preloaderSpin infinite 5s linear;
+    }
+}
+
+@keyframes preloaderSpin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

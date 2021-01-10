@@ -8,7 +8,7 @@ let User = ({user}) => {
 
 
     return (
-        <div key={u.id}>
+        <div className={s.user} key={u.id}>
             <div>
                 <img className={s.userPhoto}
                      src={"https://prm.ua/wp-content/uploads/2019/02/50766681_285739525440896_2458080093832029354_n.jpg"}

@@ -20,16 +20,18 @@ class App extends Component {
 
                         <header className="header">
                             <img src={logo} className="logo" alt="logo"/>
-                            <NavLink to='/users'>Users</NavLink>
+                            <NavLink to='/users'>to Users</NavLink>
                         </header>
 
                         <div className='app-wrapper-content'>
-                            <Route exact path='/users'
-                                   render={() => <UsersContainer/>}/>
-                            <Route exact path='/users/:userId/posts'
-                                   render={() => <PostsContainer/>}/>
-                            <Route path='/users/:userId/posts/:postId'
-                                   render={() => <PostsDetailsContainer/>}/>
+                            <div className="app-content">
+                                <Route exact path='/users'
+                                       render={() => <UsersContainer/>}/>
+                                <Route exact path='/users/:userId/posts'
+                                       render={() => <PostsContainer/>}/>
+                                <Route path='/users/:userId/posts/:postId'
+                                       render={() => <PostsDetailsContainer/>}/>
+                            </div>
                         </div>
 
                     </div>

@@ -19,8 +19,7 @@ let Posts = ({...props}) => {
         <div>
 
             {isAddPostMode
-                ?
-                <div className={s.addPostPopupWrapper}>
+                ? <div className={s.addPostPopupWrapper}>
                     <div className={s.addPostPopup}>
                         <button onClick={() => setIsAddPostMode(false)}>X</button>
                         <AddPostFormRedux onSubmit={addPost}/>

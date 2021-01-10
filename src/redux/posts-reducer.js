@@ -5,7 +5,7 @@ const SET_POSTS = 'posts/SET_POSTS'
 const TOGGLE_IS_FETCHING = 'posts/TOGGLE_IS_FETCHING'
 const ADD_POST = 'posts/ADD_POST'
 const SET_CURRENT_POST = 'posts/SET_CURRENT_POST'
-
+const SET_COMMENTS = 'posts/SET_COMMENTS'
 let initialState = {
     posts: [],
     isFetching: true,
@@ -21,6 +21,12 @@ const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 posts: [...action.posts]
+            }
+        }
+        case SET_COMMENTS: {
+            return {
+                ...state,
+                comments: [...action.comments]
             }
         }
         case ADD_POST: {
@@ -57,6 +63,7 @@ const postsReducer = (state = initialState, action) => {
 }
 
 export const setPosts = (posts) => ({type: SET_POSTS, posts})
+export const setComments = (comments) => ({type: SET_COMMENTS, comments})
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 export const addPostSuccess = (userId, title, body, id) => ({type: ADD_POST, data: {userId, title, body, id}})
 export const setCurrentPost = (postId) => ({type: SET_CURRENT_POST, postId})
@@ -65,8 +72,17 @@ export const getPosts = (userId, postId = null) => async (dispatch) => {
     dispatch(toggleIsFetching(true))
     let data = await postsAPI.getPosts(userId)
     dispatch(setPosts(data))
-    if (postId) dispatch(setCurrentPost(postId))
+
+    if (postId) {
+        dispatch(setCurrentPost(postId))
+        await dispatch(getComments(postId))
+    }
     dispatch(toggleIsFetching(false))
+}
+
+export const getComments = (postId) => async (dispatch) => {
+    let data = await postsAPI.getComments(postId)
+    dispatch(setComments(data))
 }
 
 export const addPost = (userId, title, body) => async (dispatch) => {

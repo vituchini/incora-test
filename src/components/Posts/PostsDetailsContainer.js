@@ -7,20 +7,24 @@ import Preloader from '../common/Preloader/Preloader'
 import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import PostDetails from "./PostDetails";
+import Comments from "./Coments/Comments";
 
 class PostsDetailsContainer extends React.Component {
 
     componentDidMount() {
         let userId = this.props.match.params.userId
         let postId = this.props.match.params.postId
-        this.props.getPosts(userId,postId)
+        this.props.getPosts(userId, postId)
     }
 
     render() {
         return <>
             {this.props.isPostsLoading
                 ? <Preloader/>
-                : <PostDetails post={this.props.currentPost}/>
+                : <div>
+                    <PostDetails post={this.props.currentPost}/>
+                    <Comments comments={this.props.comments}/>
+                </div>
             }
 
         </>
@@ -29,7 +33,8 @@ class PostsDetailsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        currentPost:state.postsPage.currentPost,
+        currentPost: state.postsPage.currentPost,
+        comments: state.postsPage.comments,
         isPostsLoading: state.postsPage.isFetching
     }
 }

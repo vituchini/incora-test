@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Post from "./Post";
 import {Field, reduxForm} from "redux-form";
 import {requiredField, maxLengthCreator} from "../../utils/validators/validators";
@@ -8,15 +8,30 @@ import s from "./Posts.module.css"
 const maxLength30 = maxLengthCreator(30)
 
 let Posts = ({...props}) => {
+
+    const [isAddPostMode, setIsAddPostMode] = useState(false);
+
     let addPost = (value) => {
         props.addPost(props.userId, value.newPostTitle, value.newPostBody)
+        setIsAddPostMode(false)
     }
     return (
         <div>
-            <button>Add new</button>
-            <AppPostFormRedux onSubmit={addPost}/>
+
+            {isAddPostMode
+                ?
+                <div className={s.addPostPopupWrapper}>
+                    <div className={s.addPostPopup}>
+                        <button onClick={() => setIsAddPostMode(false)}>X</button>
+                        <AddPostFormRedux onSubmit={addPost}/>
+                    </div>
+                </div>
+                : <button onClick={() => setIsAddPostMode(true)}>Add new</button>
+
+            }
+
             <div className={s.Posts}>
-                {props.posts.map(p => <Post key={p.id} post={p}/>)}
+                {props.posts.map(p => <Post userId={props.userId} key={p.id} post={p}/>)}
             </div>
 
         </div>
@@ -40,6 +55,6 @@ const AddPostForm = (props) => {
         </form>
     )
 }
-const AppPostFormRedux = reduxForm({form: 'addPostForm'})(AddPostForm)
+const AddPostFormRedux = reduxForm({form: 'addPostForm'})(AddPostForm)
 
 export default Posts

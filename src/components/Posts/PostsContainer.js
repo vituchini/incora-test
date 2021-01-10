@@ -29,7 +29,7 @@ class PostsContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        posts: state.postsPage.currentPosts,
+        posts: state.postsPage.posts,
         isPostsLoading: state.postsPage.isFetching
     }
 }

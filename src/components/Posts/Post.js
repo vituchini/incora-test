@@ -1,7 +1,8 @@
 import React from "react";
 import s from './Posts.module.css'
+import {NavLink} from "react-router-dom";
 
-let Post = ({post}) => {
+let Post = ({post,userId}) => {
     let p = post
 
     return (
@@ -17,9 +18,11 @@ let Post = ({post}) => {
                 text : {p.body}
             </div>
             <div>
-                <button>
-                    Details
-                </button>
+                <NavLink to={`/users/${userId}/posts/` + p.id}>
+                    <button>
+                        Details
+                    </button>
+                </NavLink>
             </div>
         </div>
     )

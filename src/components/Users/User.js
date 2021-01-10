@@ -1,23 +1,11 @@
 import React from "react";
 import s from './Users.module.css'
 import {NavLink} from "react-router-dom";
+import {objectToJsx} from "../../utils/object-helpers";
 
 let User = ({user}) => {
     let u = user
-    let objectToJsx = (obj) => {
-        if (obj) return Object.keys(obj).map((x, y) => {
-            if (typeof obj[x] === "string") {
-                return (
-                    <div key={y}>{x} : {obj[x]} </div>
-                )
-            } else if (typeof obj[x] === "object") {
-                return (
-                    <div key={y}>{objectToJsx(obj[x])}</div>
-                )
-            }
-            return ''
-        })
-    }
+
 
     return (
         <div key={u.id}>

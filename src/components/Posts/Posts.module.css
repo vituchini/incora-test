@@ -198,3 +198,13 @@
 .postInfo div{
     padding: 10px 0px;
 }
+.photoAndUserName {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+.userNameInfo {
+    text-align: center;
+    padding: 15px;
+    font-size: 24px;
+}

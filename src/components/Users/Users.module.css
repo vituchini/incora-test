@@ -25,18 +25,12 @@
     padding: 15px;
 }
 .company div{
-    margin-left: 15px;
-}
-.company div:before{
-    content:">";
+    margin-left: 20px;
 }
 
-.address div:before{
-    content:"> ";
-}
 
 .address div{
-    margin-left: 15px;
+    margin-left: 20px;
 
 }
 .userTop{

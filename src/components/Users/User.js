@@ -1,11 +1,9 @@
 import React from "react";
 import s from './Users.module.css'
 import {NavLink} from "react-router-dom";
-import {objectToJsx} from "../../utils/object-helpers";
 
 let User = ({user}) => {
     let u = user
-
 
     return (
         <div className={s.user} key={u.id}>

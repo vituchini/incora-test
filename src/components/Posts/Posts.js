@@ -38,7 +38,7 @@ let Posts = ({...props}) => {
             }
 
             <div className={s.posts}>
-                {props.posts.map(p => <Post userId={props.userId} key={p.id} post={p}/>)}
+                {props.posts.map(p => <Post user={props.user} userId={props.userId} key={p.id} post={p}/>)}
             </div>
 
         </div>

@@ -1,6 +1,10 @@
-body{
+body {
     background-color: #2f3139;
     font-family: Lucida Grande;
+}
+
+body button {
+    cursor: pointer;
 }
 
 .logo {
@@ -23,20 +27,24 @@ body{
     justify-content: space-around;
     font-size: calc(10px + 2vmin);
 }
-.header a{
+
+.header a {
     text-decoration: none;
     color: #61dafb;
 }
-.app-wrapper-content{
+
+.app-wrapper-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     color: rgb(173, 213, 238);
 }
-.app-content{
+
+.app-content {
     width: 80%;
 }
+
 @keyframes App-logo-spin {
     from {
         transform: rotate(0deg);

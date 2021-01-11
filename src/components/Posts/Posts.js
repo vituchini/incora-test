@@ -21,8 +21,14 @@ let Posts = ({...props}) => {
             {isAddPostMode
                 ? <div className={s.addPostPopupWrapper}>
                     <div className={s.addPostPopup}>
-                        <button onClick={() => setIsAddPostMode(false)}>X</button>
-                        <AddPostFormRedux onSubmit={addPost}/>
+
+                        <div className={s.exitButton}>
+                            <button onClick={() => setIsAddPostMode(false)}>X</button>
+                        </div>
+                        <div className={s.addPostForms}>
+                            <AddPostFormRedux onSubmit={addPost}/>
+                        </div>
+
                     </div>
                 </div>
                 : <div className={s.addNewPostButton}>
@@ -50,7 +56,7 @@ const AddPostForm = (props) => {
                 <Field validate={[requiredField, maxLength30]} component={TextArea} name={'newPostBody'}
                        placeholder={'Type ur message!'}/>
             </div>
-            <div>
+            <div className={s.addPostFormButton}>
                 <button>ADD POST</button>
             </div>
         </form>

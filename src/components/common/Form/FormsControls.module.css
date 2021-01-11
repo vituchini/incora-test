@@ -10,6 +10,7 @@
 
 .formControl.error div {
     color: red;
+    font-size: 24px;
 }
 .formControl textarea {
     height: 40px;
@@ -17,7 +18,12 @@
     outline: none;
     resize: none;
     border-radius: 10px;
+padding: 10px;
 
+}
+.formControl textarea::-webkit-input-placeholder {
+    text-align: center;
+    font-size: 30px;
 }
 
 .formSummaryError {

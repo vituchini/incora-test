@@ -40,10 +40,14 @@
 }
 
 .addPostPopup {
+    position: relative;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.4);
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
     border-radius: 10px;
     padding: 50px;
+    border: 2px solid white;
+
 }
 
 .titleContent {
@@ -70,16 +74,14 @@
     transition-duration: 0.4s;
     outline: none;
 }
+
 .addNewPostButton button:hover {
     background-color: #202631;
     color: white;
 }
-.postDetailsButton {
-    /*right: 20vw;*/
-}
 
 .postDetailsButton button {
-    background-color: #61dafb;
+    background-color: #55d6fc;
     border-radius: 10px;
     width: 30vw;
     max-width: 300px;
@@ -93,4 +95,54 @@
 .postDetailsButton button:hover {
     background-color: #202631;
     color: white;
+}
+
+.exitButton {
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px;
+}
+
+.exitButton button {
+    background-color: white;
+    outline: none;
+    border: none;
+    border-radius: 100px;
+    width: 30px;
+    height: 100%;
+    text-align: center;
+    transition-duration: 0.4s;
+
+}
+
+.exitButton button:hover {
+    background-color: #17191d;
+    color: white;
+    border: 2px solid white;
+}
+
+.addPostForms {
+    margin: 10px;
+}
+
+.addPostFormButton button {
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+
+}
+
+.updatePostFormButton button {
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
 }

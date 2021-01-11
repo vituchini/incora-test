@@ -34,7 +34,9 @@ let PostDetails = ({...props}) => {
                     {isUpdatePostMode
                         ? <div className={s.addPostPopupWrapper}>
                             <div className={s.addPostPopup}>
-                                <button onClick={() => setIsUpdatePostMode(false)}>X</button>
+                                <div className={s.exitButton}>
+                                    <button onClick={() => setIsUpdatePostMode(false)}>X</button>
+                                </div>
                                 <UpdatePostFormRedux onSubmit={updatePost}/>
                             </div>
                         </div>
@@ -73,7 +75,7 @@ const UpdatePostForm = (props) => {
                 <Field validate={[requiredField, maxLength30]} component={TextArea} name={'newPostBody'}
                        placeholder={'Type ur message!'}/>
             </div>
-            <div>
+            <div className={s.updatePostFormButton}>
                 <button>UPDATE POST</button>
             </div>
         </form>

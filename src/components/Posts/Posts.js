@@ -29,7 +29,7 @@ let Posts = ({...props}) => {
 
             }
 
-            <div className={s.Posts}>
+            <div className={s.posts}>
                 {props.posts.map(p => <Post userId={props.userId} key={p.id} post={p}/>)}
             </div>
 

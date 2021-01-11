@@ -21,36 +21,42 @@ let PostDetails = ({...props}) => {
 
     }
     return (
+        <div key={p.id} className={s.postDetailsWrapper}>
+            <div className={s.photoAndButtons}>
+                <div>
+                    <img className={s.userPhoto}
+                         src={"https://prm.ua/wp-content/uploads/2019/02/50766681_285739525440896_2458080093832029354_n.jpg"}
+                         alt="userPhoto"
+                    />
+                </div>
 
-        <div key={p.id}>
-            {/*{!p.title ? <Redirect to={'/users'}/> : ''}*/}
-            <div>
-                <img className={s.userPhoto}
-                     src={"https://prm.ua/wp-content/uploads/2019/02/50766681_285739525440896_2458080093832029354_n.jpg"}
-                     alt="userPhoto"
-                />
+                <div>
+                    {isUpdatePostMode
+                        ? <div className={s.addPostPopupWrapper}>
+                            <div className={s.addPostPopup}>
+                                <button onClick={() => setIsUpdatePostMode(false)}>X</button>
+                                <UpdatePostFormRedux onSubmit={updatePost}/>
+                            </div>
+                        </div>
+                        : <button onClick={() => setIsUpdatePostMode(true)}>Update</button>
+
+                    }
+                    <NavLink to={`/users/${p.userId}/posts`}>
+                        <button onClick={deletePost}>
+                            Delete
+                        </button>
+                    </NavLink>
+                </div>
             </div>
             <div className={'postInfo'}>
-                title : {p.title} <br/>
-                text : {p.body}
-            </div>
-            <div>
-                {isUpdatePostMode
-                    ?
-                    <div className={s.addPostPopupWrapper}>
-                        <div className={s.addPostPopup}>
-                            <button onClick={() => setIsUpdatePostMode(false)}>X</button>
-                            <UpdatePostFormRedux onSubmit={updatePost}/>
-                        </div>
-                    </div>
-                    : <button onClick={() => setIsUpdatePostMode(true)}>Update</button>
 
-                }
-                <NavLink to={`/users/${p.userId}/posts`}>
-                    <button onClick={deletePost}>
-                        Delete
-                    </button>
-                </NavLink>
+                <div className={s.titleContent}>
+                    {p.title}
+                </div>
+                <hr/>
+                <div className={s.textContent}>
+                    {p.body}
+                </div>
 
             </div>
         </div>

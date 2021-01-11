@@ -1,13 +1,66 @@
-.userPhoto{
+.userPhoto {
     width: 100px;
     height: 100px;
     border-radius: 100px;
 }
 
-.users{
+.users {
     margin: 10px;
 }
-.user{
-    padding: 10px;
 
+.user {
+    padding: 10px;
+    font-size: 24px;
+    border-bottom: 1px solid #55d6fc;
+}
+
+.photoAndUserName {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+.userNameInfo {
+    text-align: center;
+    padding: 15px;
+}
+.company div{
+    margin-left: 15px;
+}
+.company div:before{
+    content:">";
+}
+
+.address div:before{
+    content:"> ";
+}
+
+.address div{
+    margin-left: 15px;
+
+}
+.userTop{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.postsButton{
+    margin-top: 10px;
+
+}
+.postsButton button {
+    background-color: #55d6fc;
+    border-radius: 10px;
+    width: 30vw;
+    max-width: 300px;
+    height: 50px;
+    text-align: center;
+    border: 2px solid white;
+    transition-duration: 0.4s;
+    outline: none;
+}
+
+.postsButton button:hover {
+    background-color: #202631;
+    color: white;
 }

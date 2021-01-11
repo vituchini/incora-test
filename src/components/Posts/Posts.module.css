@@ -4,9 +4,23 @@
     border-radius: 100px;
 }
 
-.Posts {
+.posts {
     display: flex;
     flex-direction: column-reverse;
+    margin: 10px;
+}
+
+.postDetailsWrapper {
+    background-color: #21232a;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 10px 0px;
+}
+
+.photoAndButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .addPostPopupWrapper {
@@ -14,16 +28,173 @@
     width: 100%;
     height: 100%;
     top: 0;
+    left: 0;
+    right: 0;
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     text-align: center;
     align-items: center;
     overflow: hidden;
     position: fixed;
+    z-index: 100;
 }
 
 .addPostPopup {
+    position: relative;
     display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 50px;
+    border: 2px solid white;
 
+}
 
+.titleContent {
+    font-size: 32px;
+}
+
+.textContent {
+    font-size: 24px;
+}
+
+.addNewPostButton {
+    position: fixed;
+    left: 0;
+    margin-left: 1%;
+
+}
+
+.addNewPostButton button {
+    background-color: #61dafb;
+    border-radius: 100px;
+    width: 100px;
+    height: 100px;
+    border: 2px solid white;
+    transition-duration: 0.4s;
+    outline: none;
+}
+
+.addNewPostButton button:hover {
+    background-color: #202631;
+    color: white;
+}
+
+.postDetailsButton button {
+    background-color: #55d6fc;
+    border-radius: 10px;
+    width: 30vw;
+    max-width: 300px;
+    height: 50px;
+    text-align: center;
+    border: 2px solid white;
+    transition-duration: 0.4s;
+    outline: none;
+}
+
+.postDetailsButton button:hover {
+    background-color: #202631;
+    color: white;
+}
+
+.exitButton {
+    height: 30px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin: 15px;
+}
+
+.exitButton button {
+    background-color: white;
+    outline: none;
+    border: none;
+    border-radius: 100px;
+    width: 30px;
+    height: 100%;
+    text-align: center;
+    transition-duration: 0.4s;
+
+}
+
+.exitButton button:hover {
+    background-color: #17191d;
+    color: white;
+    border: 2px solid white;
+}
+
+.addPostForms {
+    margin: 10px;
+}
+
+.addPostFormButton button {
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+
+}
+
+.updatePostFormButton button {
+    margin-top: 10px;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.postDetailsButtons button {
+    background-color: #55d6fc;
+    border-radius: 0px 10px 10px 0px;
+    width: 30vw;
+    max-width: 200px;
+    height: 50px;
+    text-align: center;
+    border: 2px solid white;
+    transition-duration: 0.4s;
+    outline: none;
+}
+
+.postDetailsButtons .updateButton {
+    border-radius: 10px 0px 0px 10px;
+
+}
+
+.postDetailsButtons button:hover {
+    background-color: #202631;
+    color: white;
+}
+
+.commentsTitle {
+    text-align: center;
+    font-size: 32px;
+}
+
+.comments {
+}
+
+.comment {
+    border-bottom: 1px solid white;
+    margin: 10px;
+}
+
+.userName {
+    font-size: 24px;
+    padding-left: 10px;
+    padding-bottom: 20px;
+}
+
+.commentPhotoAndName {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding: 10px 0px;
+}
+
+.postInfo div{
+    padding: 10px 0px;
 }

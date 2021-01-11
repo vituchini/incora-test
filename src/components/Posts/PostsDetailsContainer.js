@@ -9,6 +9,7 @@ import {withRouter} from "react-router-dom";
 import {compose} from "redux";
 import PostDetails from "./PostDetails";
 import Comments from "./Coments/Comments";
+import s from './Posts.module.css'
 
 class PostsDetailsContainer extends React.Component {
 
@@ -26,7 +27,9 @@ class PostsDetailsContainer extends React.Component {
                     <PostDetails updatePost={this.props.updatePost}
                                  post={this.props.currentPost}
                                  deletePost={this.props.deletePost}/>
-                    <Comments comments={this.props.comments}/>
+                    <div className={s.comments}>
+                        <Comments comments={this.props.comments}/>
+                    </div>
                 </div>
             }
 

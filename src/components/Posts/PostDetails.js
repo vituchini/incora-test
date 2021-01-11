@@ -40,14 +40,18 @@ let PostDetails = ({...props}) => {
                                 <UpdatePostFormRedux onSubmit={updatePost}/>
                             </div>
                         </div>
-                        : <button onClick={() => setIsUpdatePostMode(true)}>Update</button>
+                        : ''
 
                     }
-                    <NavLink to={`/users/${p.userId}/posts`}>
-                        <button onClick={deletePost}>
-                            Delete
-                        </button>
-                    </NavLink>
+                    <div className={s.postDetailsButtons}>
+                        <button className={s.updateButton} onClick={() => setIsUpdatePostMode(true)}>Update</button>
+                        <NavLink to={`/users/${p.userId}/posts`}>
+                            <button onClick={deletePost}>
+                                Delete
+                            </button>
+                        </NavLink>
+                    </div>
+
                 </div>
             </div>
             <div className={'postInfo'}>

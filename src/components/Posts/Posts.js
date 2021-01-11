@@ -25,7 +25,9 @@ let Posts = ({...props}) => {
                         <AddPostFormRedux onSubmit={addPost}/>
                     </div>
                 </div>
-                : <button onClick={() => setIsAddPostMode(true)}>Add new</button>
+                : <div className={s.addNewPostButton}>
+                    <button onClick={() => setIsAddPostMode(true)}>Add new</button>
+                </div>
 
             }
 

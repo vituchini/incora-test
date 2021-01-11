@@ -16,7 +16,7 @@ let Post = ({post, userId}) => {
                          alt="userPhoto"
                     />
                 </div>
-                <div>
+                <div className={s.postDetailsButton}>
                     <NavLink to={`/users/${userId}/posts/` + p.id}>
                         <button>
                             Details
